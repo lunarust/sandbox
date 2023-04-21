@@ -1,0 +1,39 @@
+## First rule - delete all
+-D
+
+## Increase the buffers to survive stress events.
+## Make this bigger for busy systems
+-b 8192
+
+## Set failure mode to syslog
+-f 1
+
+## Default Rules
+-w /etc/passwd -p wa -k passwd_file_watch
+-w /etc/group -p wa -k group_file_watch
+-w /etc/sudoers -p wa -k sudoers_file_watch
+-w /etc/audit -p rwxa -k audit_dir_watch
+-w /etc/ssh -p rwxa -k ssh_dir_watch
+# -w /etc/zabbix -p rwxa -k zabbix_dir_watch
+-w /etc/ntp -p rwxa -k ntp_dir_watch
+-w /etc/ntp.conf -p wa -k ntp_conf_file_watch
+-w /etc/resolv.conf -p wa -k resolv_conf_file_watch
+-w /etc/krb5.conf -p wa -k krb5_conf_file_watch
+# -w /etc/filebeat -p rwxa -k filebeat_dir_watch
+-w /etc/salt -p rwxa -k salt_dir_watch
+# -w /etc/selinux -p rwxa -k selinux_dir_watch
+-w /etc/pam.d -p rwxa -k pam_d_dir_watch
+-w /etc/logrotate.d -p rwxa -k logrotate_d_dir_watch
+-w /etc/clamd.d -p rwxa -k clamd_d_dir_watch
+-w /etc/firewalld -p rwxa -k firewall_d_dir_watch
+-w /etc/sysconfig -p rwxa -k sysconfig_dir_watch
+
+## Prevent constant logs from ntp
+-a never,exclude -F gid=38
+-a never,exclude /usr/bin/docker-init
+-a never,exclude /var/lib/docker -k docker
+
+
+## Logging root actions
+-a exit,always -F arch=b64 -F euid=0 -S execve -k root_commands
+-a exit,always -F arch=b32 -F euid=0 -S execve -k root_commands
