@@ -32,7 +32,7 @@ def connect(params):
 
 if __name__ == '__main__':
     print('Testing connection to DataWarehouse...')
-    connect(config.dwdb())
+    connect(config.dw())
 
     print('Testing connection to Pegasus...')
-    connect(config.proddb())
+    connect(config.prod())

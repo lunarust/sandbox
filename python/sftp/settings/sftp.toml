@@ -1,0 +1,17 @@
+[connections]
+  [connections.dummy]
+    ip = "myftp.plop.com"
+    port = 22022
+    user = "dang"
+    password = "password"
+    key = ""
+    path = [ "FFI" ]
+    dtformat = "%Y%m%d"
+  [connections.biggerdummy]
+    ip = "myotherftp.plop.com"
+    port = 22022
+    user = "ouch"
+    password = "yup"
+    key = "thisiskey"
+    path = [ "todayismonday/out", "todayisnot/out" ]
+    dtformat = "%Y%m%d"    

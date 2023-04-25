@@ -96,6 +96,20 @@ result: 0 Success
 # numResponses: 1
 ```
 
+## Sync issue
+```bash
+ipa-replica-manage re-initialize --from ipa02.local
+Update in progress, 3 seconds elapsed
+Update succeeded
+```
+count or check users/group/hosts
+ipa host-find
+ipa user-find
+...
+
+
+
+
 
 ## Connection Configuration example:
 

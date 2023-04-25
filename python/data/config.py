@@ -2,7 +2,7 @@
 from configparser import ConfigParser
 
 
-def dwdb(filename='database.ini', section='dw'):
+def dw(filename='database.ini', section='dw'):
     # create a parser
     parser = ConfigParser()
     # read config file
@@ -15,11 +15,11 @@ def dwdb(filename='database.ini', section='dw'):
         for param in params:
             dw[param[0]] = param[1]
     else:
-        raise Exception('Section {0} not found in the {1} file'.format(section, filename))
+        raise Exception(f'Section {section} not found in the {filename} file')
 
     return dw
 
-def proddb(filename='database.ini', section='prod'):
+def prod(filename='database.ini', section='prod'):
     # create a parser
     parser = ConfigParser()
     # read config file
@@ -32,6 +32,6 @@ def proddb(filename='database.ini', section='prod'):
         for param in params:
             prod[param[0]] = param[1]
     else:
-        raise Exception('Section {0} not found in the {1} file'.format(section, filename))
+        raise Exception(f'Section {section} not found in the {filename} file')
 
     return prod    
